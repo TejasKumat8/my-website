@@ -1,0 +1,96 @@
+GIT COMMANDS USED IN THIS ASSIGNMENT
+====================================
+
+--- Step 1: Local Repository Setup ---
+
+1. mkdir my-website  /  cd my-website
+   Creates the project folder and moves into it. (index.html and about.html were created inside it.)
+
+2. git init -b main
+   Initializes a new empty Git repository in the current folder, with "main" as the default branch.
+
+--- Step 2: Git Workflow ---
+
+3. git status
+   Shows the current state of the working directory - which files are untracked, modified or staged.
+
+4. git add index.html about.html
+   Adds the files to the staging area so they are included in the next commit.
+
+5. git commit -m "Initial commit: add index and about pages"
+   Saves a snapshot of the staged files in the repository history, with a message.
+
+6. git diff
+   Shows the exact line changes made to files that are not yet staged.
+
+7. git add index.html
+   git commit -m "Update home page content"
+   Stages the modified index.html and records it as the second commit.
+
+8. git branch feature
+   Creates a new branch called "feature" pointing to the current commit.
+
+9. git checkout feature
+   Switches the working directory to the feature branch.
+
+10. git branch
+    Lists all local branches; the * marks the branch I am currently on.
+
+11. git add about.html
+    git commit -m "Add skills section to about page"
+    Commits the changes made to about.html on the feature branch only.
+
+12. git checkout main
+    Switches back to the main branch.
+
+13. git merge --no-ff feature -m "Merge branch feature into main"
+    Merges the feature branch into main. --no-ff creates a merge commit so the branch is visible in history.
+
+14. git log --oneline --graph --all
+    Displays the commit history of all branches in a short, graphical form.
+
+--- Step 3: .gitignore ---
+
+15. git add .gitignore
+    git commit -m "Add .gitignore for log files and temp folder"
+    Commits the .gitignore file, which tells Git to ignore all *.log files and the temp/ folder.
+    (After this, debug.log and temp/notes.txt did not appear in git status.)
+
+--- Step 4: Undo Operation ---
+
+16. git commit -m "Add footer comment to home page"
+    Extra commit made so that it can be undone.
+
+17. git log --oneline -3
+    Shows the last 3 commits, to see the commit before undoing it.
+
+18. git revert HEAD --no-edit
+    Undoes the last commit by creating a new commit that reverses its changes. The history is kept,
+    which is safer than git reset for a repository that will be shared on GitHub.
+
+19. git log --oneline -4
+    Confirms the revert commit was added on top of the undone commit.
+
+--- Step 5: GitHub Integration ---
+
+20. gh repo create my-website --public
+    Creates a new public repository on GitHub (can also be done from the GitHub website).
+
+21. git remote add origin https://github.com/TejasKumat8/my-website.git
+    Links the local repository to the GitHub repository with the name "origin".
+
+22. git remote -v
+    Verifies the remote URL used for fetch and push.
+
+23. git push -u origin main
+    Uploads the main branch to GitHub and sets origin/main as its upstream branch.
+
+24. git push origin feature
+    Uploads the feature branch to GitHub as well.
+
+--- Step 6: Command Documentation ---
+
+25. git add git_commands.txt
+    git commit -m "Add git commands documentation"
+    git push
+    Adds this file to the repository and pushes it to GitHub.
